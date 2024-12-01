@@ -1,6 +1,4 @@
-import type { Context } from 'https://edge.netlify.com'
-
-export default async (request: Request, context: Context) => {
+export default async () => {
   const apiKey = Netlify.env.get("GOOGLE_BLOGGER_API_KEY");
   const blogId = Netlify.env.get("GOOGLE_BLOGGER_ID");
   const res = await fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId}?key=${apiKey}`, {
@@ -15,5 +13,6 @@ export default async (request: Request, context: Context) => {
       "content-type": "text/event-stream"
     }
   });
-}
+};
 
+export const config = { path: "/test" };
